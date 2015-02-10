@@ -1,3 +1,6 @@
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
 Gem::Specification.new do |s|
   s.name        = "jekyll-collection-multiplier"
   s.summary     = "Allows you to rerender a single Jekyll collection into multiple places"
@@ -7,8 +10,8 @@ Gem::Specification.new do |s|
   s.homepage    = "https://github.com/gjtorikian/jekyll-collection-multiplier"
   s.licenses    = ["MIT"]
   s.files       = [ "lib/jekyll-collection-multiplier.rb" ]
+  s.require_paths = ["lib"]
 
-  s.add_dependency "jekyll", '~> 2.0'
-
-  s.add_development_dependency  'rake'
+  s.add_development_dependency 'jekyll',    '~> 2.0'
+  s.add_development_dependency 'rake'
 end
