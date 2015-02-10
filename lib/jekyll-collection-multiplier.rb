@@ -13,7 +13,6 @@ module Jekyll
       og_rp = old_cleaned_relative_path
       og_rp.sub(%r{\A_[^/]+/}, '')
     end
-
   end
 
 
@@ -26,12 +25,13 @@ module Jekyll
       site.config['collection_multiplier'].each do |multiplier|
         site.collections.each_pair do |collection_name, collection|
           next unless multiplier['type'] == collection_name
-          renamed = multiplier['rename']
+          renamed = multiplier['dupe']
           duped_collection = Jekyll::Collection.new(site, renamed)
           duped_collection.docs = collection.docs.dup.map do |doc|
             duped_doc = Jekyll::Document.new(doc.path, { :site => site, :collection => duped_collection })
             duped_doc.content = doc.content
-            duped_doc.read
+            actual_path = doc.path.sub(collection_name, renamed)
+            duped_doc.read(:actual_path => actual_path)
             duped_doc
           end
 
