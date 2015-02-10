@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = "jekyll-collection-multiplier"
   s.summary     = "Allows you to rerender a single Jekyll collection into multiple places"
-  s.version     = "0.0.1"
+  s.version     = "0.1.0"
   s.authors     = ["Garen J. Torikian"]
 
   s.homepage    = "https://github.com/gjtorikian/jekyll-collection-multiplier"
